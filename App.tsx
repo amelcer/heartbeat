@@ -1,27 +1,26 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
 import { initializeApp } from 'firebase/app'
-import config from './firebaseConfig'
+import { Provider as PaperProvider } from 'react-native-paper'
+import { SafeAreaView, StatusBar, StyleSheet, Platform } from 'react-native'
+import theme from './src/library/theme/theme'
+import config from './src/library/firebaseConfig'
+import Root from './src/Root'
 
 initializeApp(config)
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
 })
 
 export default function App() {
+    const barStyle = Platform.OS === 'ios' ? 'dark-content' : 'default'
     return (
-        <NavigationContainer>
-            <View style={styles.container}>
-                <Text>Open up App.tsx to start working on your app!</Text>
-                <StatusBar />
-            </View>
-        </NavigationContainer>
+        <SafeAreaView style={styles.container}>
+            <StatusBar barStyle={barStyle} />
+            <PaperProvider theme={theme}>
+                <Root />
+            </PaperProvider>
+        </SafeAreaView>
     )
 }

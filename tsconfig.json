@@ -6,8 +6,8 @@
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
         "module": "esnext",
-        "isolatedModules": true
-        // "baseUrl": "./src"
+        "isolatedModules": true,
+        "baseUrl": "."
     }
-    // "include": ["src"]
+    // "include": ["src", "App.tsx"]
 }
