@@ -28,6 +28,7 @@
             },
             { "usePrettierrc": true }
         ],
-        "react/jsx-no-useless-fragment": "off"
+        "react/jsx-no-useless-fragment": "off",
+        "react/destructuring-assignment": "warn"
     }
 }

@@ -1,6 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
+import { initializeApp } from 'firebase/app'
+import config from './firebaseConfig'
+
+initializeApp(config)
 
 const styles = StyleSheet.create({
     container: {
