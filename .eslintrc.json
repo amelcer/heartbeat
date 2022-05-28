@@ -21,6 +21,7 @@
         "react/require-default-props": "off",
         "react/jsx-key": "error",
         "import/order": "warn",
+        "global-require": "off",
         "prettier/prettier": [
             "warn",
             {
