@@ -3,10 +3,12 @@ import { NativeStackNavigationEventMap, NativeStackNavigationOptions } from '@re
 import { NativeStackNavigatorProps } from '@react-navigation/native-stack/lib/typescript/src/types'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Text } from 'react-native-paper'
+import { ActivityIndicator } from 'react-native-paper'
+import AuthHeader from 'src/components/AuthHeader/AuthHeader'
 import SignIn from './signIn/SignIn'
 import Register from './register/Register'
 import FirstLaunch from '../firstLaunch/FirstLaunch'
+import routes from './routes'
 
 interface Props {
     Stack: TypedNavigator<
@@ -30,6 +32,7 @@ export default function AuthStack({ Stack }: Props) {
     const [firstTimeOpen, setFirsTimeOpen] = useState(true)
 
     useEffect(() => {
+        AsyncStorage.setItem('firstLaunch', 'false')
         AsyncStorage.getItem('firstLaunch')
             .then((launched) => {
                 if (launched === 'true') {
@@ -40,7 +43,7 @@ export default function AuthStack({ Stack }: Props) {
             .catch((e) => console.warn(e))
             .finally(() => {
                 setIsLoading(false)
-                AsyncStorage.setItem('firstLaunch', 'true')
+                // AsyncStorage.setItem('firstLaunch', 'true')
             })
     }, [])
 
@@ -48,15 +51,15 @@ export default function AuthStack({ Stack }: Props) {
 
     return (
         <>
-            <Text>Hello</Text>
+            <AuthHeader />
             <Stack.Navigator
                 screenOptions={{
                     headerShown: false,
                 }}
             >
-                {firstTimeOpen && <Stack.Screen name="firstLaunch" component={FirstLaunch} />}
-                <Stack.Screen name="SignIn" component={SignIn} />
-                <Stack.Screen name="Register" component={Register} />
+                {firstTimeOpen && <Stack.Screen name={routes.FIRST_LAUNCH} component={FirstLaunch} />}
+                <Stack.Screen name={routes.SIGN_IN} component={SignIn} />
+                <Stack.Screen name={routes.REGISTER} component={Register} />
             </Stack.Navigator>
         </>
     )

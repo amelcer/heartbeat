@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { useState, useEffect, useCallback } from 'react'
 import { SafeAreaView, StatusBar, StyleSheet, Platform } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'
@@ -8,7 +7,7 @@ import Root from './src/Root'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        marginHorizontal: 20,
     },
 })
 
