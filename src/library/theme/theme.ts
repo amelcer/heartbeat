@@ -1,5 +1,6 @@
-import { DefaultTheme } from 'react-native-paper'
+import { DefaultTheme, configureFonts } from 'react-native-paper'
 import { Theme } from 'react-native-paper/lib/typescript/types'
+import fontConfig from './fonts'
 
 const theme: Theme = {
     ...DefaultTheme,
@@ -7,6 +8,7 @@ const theme: Theme = {
         ...DefaultTheme.colors,
         primary: '#EC5766',
     },
+    fonts: configureFonts(fontConfig),
 }
 
 export default theme
