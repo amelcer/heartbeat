@@ -1,9 +1,7 @@
-import { Link } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Image, StyleSheet, View } from 'react-native'
 import { Button, Text } from 'react-native-paper'
 import theme from 'src/library/theme/theme'
-import routes from '../auth/routes'
 import { AuthStackParamList } from '../auth/types'
 
 const styles = StyleSheet.create({
@@ -37,9 +35,13 @@ const styles = StyleSheet.create({
     },
 })
 
-export default function FirstLaunch({ navigation }: NativeStackScreenProps<AuthStackParamList, 'Register'>) {
+export default function FirstLaunch({ navigation }: NativeStackScreenProps<AuthStackParamList>) {
     const handleNavigateToRegister = () => {
         navigation.navigate('Register')
+    }
+
+    const handleNavigateToSignIn = () => {
+        navigation.navigate('SignIn')
     }
 
     return (
@@ -58,9 +60,9 @@ export default function FirstLaunch({ navigation }: NativeStackScreenProps<AuthS
             <View>
                 <Text style={styles.haveAccount}>
                     Already have account?{' '}
-                    <Link to={{ screen: routes.SIGN_IN, params: {} }} style={styles.signIn}>
+                    <Text onPress={handleNavigateToSignIn} style={styles.signIn}>
                         Sign in
-                    </Link>
+                    </Text>
                 </Text>
             </View>
         </View>

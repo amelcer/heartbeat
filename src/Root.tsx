@@ -6,6 +6,8 @@ import { useAuth } from './library/hooks/useAuth'
 import AuthStack from './screens/auth/AuthStack'
 import UserStack from './UserStack'
 import theme from './library/theme/theme'
+import { AuthStackParamList } from './screens/auth/types'
+import { UserStackParamList } from './types'
 
 const navigationTheme = {
     ...DefaultTheme,
@@ -15,7 +17,7 @@ const navigationTheme = {
     },
 }
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<AuthStackParamList & UserStackParamList>()
 
 export default function Root() {
     const { user } = useAuth()

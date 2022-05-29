@@ -5,14 +5,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native-paper'
 import AuthHeader from 'src/components/AuthHeader/AuthHeader'
+import { UserStackParamList } from 'src/types'
 import SignIn from './signIn/SignIn'
 import Register from './register/Register'
 import FirstLaunch from '../firstLaunch/FirstLaunch'
 import routes from './routes'
+import { AuthStackParamList } from './types'
 
 interface Props {
     Stack: TypedNavigator<
-        ParamListBase,
+        AuthStackParamList & UserStackParamList,
         StackNavigationState<ParamListBase>,
         NativeStackNavigationOptions,
         NativeStackNavigationEventMap,
@@ -57,9 +59,9 @@ export default function AuthStack({ Stack }: Props) {
                     headerShown: false,
                 }}
             >
-                {firstTimeOpen && <Stack.Screen name={routes.FIRST_LAUNCH} component={FirstLaunch} />}
-                <Stack.Screen name={routes.SIGN_IN} component={SignIn} />
-                <Stack.Screen name={routes.REGISTER} component={Register} />
+                {firstTimeOpen && <Stack.Screen name="FirstLaunch" component={FirstLaunch} />}
+                <Stack.Screen name="SignIn" component={SignIn} />
+                <Stack.Screen name="Register" component={Register} />
             </Stack.Navigator>
         </>
     )
