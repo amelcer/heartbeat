@@ -1,3 +1,4 @@
+import { getAuth } from 'firebase/auth'
 import { FirebaseOptions, initializeApp } from 'firebase/app'
 import Constants from 'expo-constants'
 
@@ -10,5 +11,6 @@ const config: FirebaseOptions = {
     appId: Constants.manifest?.extra?.APP_ID,
 }
 
-const app = initializeApp(config)
-export default app
+export const app = initializeApp(config)
+
+export const auth = getAuth(app)

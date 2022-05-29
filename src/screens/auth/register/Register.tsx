@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import React from 'react'
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Divider, Text } from 'react-native-paper'
+import { auth } from 'src/library/firebaseConfig'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
 import { AuthStackParamList } from '../types'
@@ -21,7 +23,7 @@ const Container = styled(View)`
 const Title = styled(Text)`
     font-size: 40px;
     font-family: ${theme.fonts.medium.fontFamily};
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 `
 
 const Terms = styled(Text)`
@@ -36,6 +38,11 @@ const TermsLink = styled(Terms)`
 
 const ButtonText = styled(Text)`
     color: white;
+`
+
+const ErrorText = styled(Text)`
+    color: ${theme.colors.error};
+    text-align: center;
 `
 
 const StyledDivider = styled(Divider)`
@@ -53,6 +60,7 @@ const HaveAccountText = styled(Text)`
 `
 
 export default function Register({ navigation }: NativeStackScreenProps<AuthStackParamList>) {
+    const [errorMessage, setErrorMessage] = useState('')
     const { control, handleSubmit, formState } = useForm<RegisterForm>({
         defaultValues: {
             email: '',
@@ -69,8 +77,17 @@ export default function Register({ navigation }: NativeStackScreenProps<AuthStac
         navigation.navigate('SignIn')
     }
 
-    const onSubmit = (data: RegisterForm) => {
-        console.log(data)
+    const onSubmit = async (data: RegisterForm) => {
+        if (!isValid) setErrorMessage('Form is not valid')
+
+        setErrorMessage('')
+
+        try {
+            const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password)
+            await sendEmailVerification(userCredentials.user)
+        } catch (e: any) {
+            setErrorMessage(e?.message || 'Could not register, Try again later')
+        }
     }
 
     return (
@@ -96,6 +113,7 @@ export default function Register({ navigation }: NativeStackScreenProps<AuthStac
                         <Terms>
                             By registering you agree to the <TermsLink>terms and conditions</TermsLink>
                         </Terms>
+                        <ErrorText>{errorMessage.length > 0 ? errorMessage : ''}</ErrorText>
                         <Button mode="contained" disabled={isDirty && !isValid} onPress={handleSubmit(onSubmit)}>
                             <ButtonText>Sign Up</ButtonText>
                         </Button>
