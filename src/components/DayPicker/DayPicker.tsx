@@ -23,7 +23,7 @@ const DayName = styled(Text)<{ today?: boolean }>`
     color: ${(props) => (props.today ? '#fff' : '#000')};
 `
 
-const DayNumber = styled(Text)`
+const DayNumber = styled(View)`
     color: black;
     padding: 5px;
     border-radius: 100px;
@@ -43,7 +43,9 @@ export default function DayPicker() {
                 return (
                     <Day key={day.toISOString()} today={isToday}>
                         <DayName today={isToday}>{day.format('dd')}</DayName>
-                        <DayNumber>{day.get('date')}</DayNumber>
+                        <DayNumber>
+                            <Text>{day.get('date')}</Text>
+                        </DayNumber>
                     </Day>
                 )
             })}
