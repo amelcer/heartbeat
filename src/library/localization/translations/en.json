@@ -1,0 +1,28 @@
+{
+    "common": {
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "email": "Email"
+    },
+    "errors": {
+        "formNotValid": "Form is not valid",
+        "cantLogin": "Could not login, Try again later",
+        "cantRegister": "Could not register, Try again later"
+    },
+    "login": {
+        "signIn": "Sign In",
+        "signInWithGoogle": "Sign In with google",
+        "signInWithFacebook": "Sign In with facebook",
+        "dontHaveAccount": "Don't have account?",
+        "signUp": "Sign Up"
+    },
+    "register": {
+        "registerNow": "Register now",
+        "terms": "By registering you agree to the",
+        "termsLink": "terms and conditions",
+        "signUpWithGoogle": "Sign Up with google",
+        "signUpWithFacebook": "Sign Up with facebook",
+        "signUp": "Sign Up",
+        "haveAccount": "Already have account?"
+    }
+}

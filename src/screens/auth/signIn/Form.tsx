@@ -3,6 +3,7 @@ import { Control, Controller, FormState } from 'react-hook-form'
 import { HelperText, TextInput } from 'react-native-paper'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
+import i18n from 'src/library/localization/i18n'
 import { LoginForm } from './types'
 
 interface Props {
@@ -40,7 +41,7 @@ export default function Form({ control, formState }: Props) {
                             error={!!errors.email}
                             mode="flat"
                             keyboardType="email-address"
-                            placeholder="Email"
+                            placeholder={i18n.t('common.email')}
                             left={<TextInput.Icon color={iconColor} name="account" />}
                         />
                         <HelperText type="error" visible={!!errors.email}>
@@ -60,7 +61,7 @@ export default function Form({ control, formState }: Props) {
                             value={value}
                             error={!!errors.password}
                             mode="flat"
-                            placeholder="Password"
+                            placeholder={i18n.t('common.password')}
                             secureTextEntry={!showPassword}
                             right={
                                 <TextInput.Icon

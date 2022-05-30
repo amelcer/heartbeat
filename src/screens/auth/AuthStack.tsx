@@ -9,7 +9,6 @@ import { UserStackParamList } from 'src/types'
 import SignIn from './signIn/SignIn'
 import Register from './register/Register'
 import FirstLaunch from '../firstLaunch/FirstLaunch'
-import routes from './routes'
 import { AuthStackParamList } from './types'
 
 interface Props {

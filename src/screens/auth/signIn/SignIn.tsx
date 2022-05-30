@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Divider, Text } from 'react-native-paper'
 import { auth } from 'src/library/firebaseConfig'
+import i18n from 'src/library/localization/i18n'
 import theme from 'src/library/theme/theme'
 import { UserStackParamList } from 'src/types'
 import styled from 'styled-components'
@@ -64,14 +65,14 @@ export default function SignIn({ navigation }: NativeStackScreenProps<AuthStackP
     }
 
     const onSubmit = async (data: LoginForm) => {
-        if (!isValid) setErrorMessage('Form is not valid')
+        if (!isValid) setErrorMessage(i18n.t('errors.formNotValid'))
 
         setErrorMessage('')
 
         try {
             await signInWithEmailAndPassword(auth, data.email, data.password)
         } catch (e: any) {
-            setErrorMessage(e?.message || 'Could not login, Try again later')
+            setErrorMessage(e?.message || i18n.t('errors.cantLogin'))
         }
     }
 
@@ -93,23 +94,23 @@ export default function SignIn({ navigation }: NativeStackScreenProps<AuthStackP
                     }}
                 >
                     <Container>
-                        <Title>Sign in</Title>
+                        <Title>{i18n.t('login.signIn')}</Title>
                         <Form control={control} formState={formState} />
                         <ErrorText>{errorMessage.length > 0 ? errorMessage : ''}</ErrorText>
                         <Button mode="contained" disabled={isDirty && !isValid} onPress={handleSubmit(onSubmit)}>
-                            <ButtonText>Sign In</ButtonText>
+                            <ButtonText>{i18n.t('login.signIn')}</ButtonText>
                         </Button>
                         <StyledDivider />
                         <SocialButton mode="contained" disabled icon="google">
-                            <ButtonText>Sign In with google</ButtonText>
+                            <ButtonText>{i18n.t('login.signInWithGoogle')}</ButtonText>
                         </SocialButton>
                         <SocialButton mode="contained" disabled icon="facebook">
-                            <ButtonText>Sign In with google</ButtonText>
+                            <ButtonText>{i18n.t('login.signInWithFacebook')}</ButtonText>
                         </SocialButton>
                         <HaveAccountText>
-                            Don&apos;`t have account?{' '}
+                            {i18n.t('login.dontHaveAccount')}{' '}
                             <Text style={{ color: theme.colors.primary }} onPress={handleNavigateToRegister}>
-                                Sign up
+                                {i18n.t('login.signUp')}
                             </Text>
                         </HaveAccountText>
                     </Container>

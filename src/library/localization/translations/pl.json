@@ -1,0 +1,18 @@
+{
+    "common": {
+        "password": "Hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "email": "Email"
+    },
+    "errors": {
+        "formNotValid": "Błędnie uzupełniony formularz",
+        "cantLogin": "Nie udało się zalogować, spróbuj ponownie później"
+    },
+    "login": {
+        "signIn": "Zaloguj",
+        "signInWithGoogle": "Zaloguj przez google",
+        "signInWithFacebook": "Zaloguj przez facebook",
+        "dontHaveAccount": "Nie masz konta?",
+        "SignUp": "Zarejestruj się"
+    }
+}

@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Divider, Text } from 'react-native-paper'
 import { auth } from 'src/library/firebaseConfig'
+import i18n from 'src/library/localization/i18n'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
 import { AuthStackParamList } from '../types'
@@ -78,7 +79,7 @@ export default function Register({ navigation }: NativeStackScreenProps<AuthStac
     }
 
     const onSubmit = async (data: RegisterForm) => {
-        if (!isValid) setErrorMessage('Form is not valid')
+        if (!isValid) setErrorMessage(i18n.t('errors.formNotValid'))
 
         setErrorMessage('')
 
@@ -86,7 +87,7 @@ export default function Register({ navigation }: NativeStackScreenProps<AuthStac
             const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password)
             await sendEmailVerification(userCredentials.user)
         } catch (e: any) {
-            setErrorMessage(e?.message || 'Could not register, Try again later')
+            setErrorMessage(e?.message || i18n.t('errors.cantRegister'))
         }
     }
 
@@ -108,26 +109,26 @@ export default function Register({ navigation }: NativeStackScreenProps<AuthStac
                     }}
                 >
                     <Container>
-                        <Title>Register now</Title>
+                        <Title>{i18n.t('register.registerNow')}</Title>
                         <Form control={control} formState={formState} />
                         <Terms>
-                            By registering you agree to the <TermsLink>terms and conditions</TermsLink>
+                            {i18n.t('register.terms')} <TermsLink>{i18n.t('register.termsLink')}</TermsLink>
                         </Terms>
                         <ErrorText>{errorMessage.length > 0 ? errorMessage : ''}</ErrorText>
                         <Button mode="contained" disabled={isDirty && !isValid} onPress={handleSubmit(onSubmit)}>
-                            <ButtonText>Sign Up</ButtonText>
+                            <ButtonText>{i18n.t('register.signUp')}</ButtonText>
                         </Button>
                         <StyledDivider />
                         <SocialButton mode="contained" disabled icon="google">
-                            <ButtonText>Sign Up with google</ButtonText>
+                            <ButtonText>{i18n.t('register.signUpWithGoogle')}</ButtonText>
                         </SocialButton>
                         <SocialButton mode="contained" disabled icon="facebook">
-                            <ButtonText>Sign Up with google</ButtonText>
+                            <ButtonText>{i18n.t('register.signUpWithGoogle')}</ButtonText>
                         </SocialButton>
                         <HaveAccountText>
-                            Already have account?{' '}
+                            {i18n.t('register.haveAccount')}{' '}
                             <Text style={{ color: theme.colors.primary }} onPress={handleNavigateToSignIn}>
-                                Sign in
+                                {i18n.t('login.signIn')}
                             </Text>
                         </HaveAccountText>
                     </Container>

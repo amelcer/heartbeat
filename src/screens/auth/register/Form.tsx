@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Control, Controller, FormState } from 'react-hook-form'
 import { HelperText, TextInput } from 'react-native-paper'
+import i18n from 'src/library/localization/i18n'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
 import { RegisterForm } from './types'
@@ -44,7 +45,7 @@ export default function Form({ control, formState }: Props) {
                             value={value}
                             error={!!errors.email}
                             mode="flat"
-                            placeholder="Email"
+                            placeholder={i18n.t('common.email')}
                             keyboardType="email-address"
                             left={<TextInput.Icon color={iconColor} name="account" />}
                         />
@@ -65,7 +66,7 @@ export default function Form({ control, formState }: Props) {
                             value={value}
                             error={!!errors.password}
                             mode="flat"
-                            placeholder="Password"
+                            placeholder={i18n.t('common.password')}
                             secureTextEntry={!showPassword}
                             right={
                                 <TextInput.Icon
@@ -93,7 +94,7 @@ export default function Form({ control, formState }: Props) {
                             value={value}
                             error={!!errors.confirmPassword}
                             mode="flat"
-                            placeholder="Confirm password"
+                            placeholder={i18n.t('common.confirmPassword')}
                             secureTextEntry={!showPasswordConfirmation}
                             right={
                                 <TextInput.Icon
