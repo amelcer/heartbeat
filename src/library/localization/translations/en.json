@@ -24,5 +24,8 @@
         "signUpWithFacebook": "Sign Up with facebook",
         "signUp": "Sign Up",
         "haveAccount": "Already have account?"
+    },
+    "home": {
+        "hello": "Hello"
     }
 }

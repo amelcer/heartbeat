@@ -14,5 +14,8 @@
         "signInWithFacebook": "Zaloguj przez facebook",
         "dontHaveAccount": "Nie masz konta?",
         "SignUp": "Zarejestruj się"
+    },
+    "home": {
+        "hello": "Hello"
     }
 }
