@@ -1,3 +1,4 @@
+import 'intl'
 import { useState, useEffect, useCallback } from 'react'
 import { SafeAreaView, StatusBar, StyleSheet, Platform } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'

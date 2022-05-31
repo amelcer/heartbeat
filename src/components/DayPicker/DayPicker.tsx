@@ -1,7 +1,7 @@
+import { DateTime } from 'luxon'
 import { useMemo } from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-paper'
-import dayjs from 'src/library/dayjs'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
 
@@ -32,19 +32,19 @@ const DayNumber = styled(View)`
 `
 
 export default function DayPicker() {
-    const weekStart = dayjs().startOf('week')
-    const today = dayjs()
-    const week = useMemo(() => Array.from({ length: 7 }).map((_, i) => weekStart.add(i, 'day')), [weekStart])
+    const weekStart = DateTime.now().startOf('week')
+    const today = DateTime.now()
+    const week = useMemo(() => Array.from({ length: 7 }).map((_, i) => weekStart.plus({ day: i })), [weekStart])
 
     return (
         <Container>
             {week.map((day) => {
-                const isToday = day.isSame(today, 'date')
+                const isToday = day.hasSame(today, 'day')
                 return (
-                    <Day key={day.toISOString()} today={isToday}>
-                        <DayName today={isToday}>{day.format('dd')}</DayName>
+                    <Day key={day.toISO()} today={isToday}>
+                        <DayName today={isToday}>{day.toFormat('ccc')}</DayName>
                         <DayNumber>
-                            <Text>{day.get('date')}</Text>
+                            <Text>{day.day}</Text>
                         </DayNumber>
                     </Day>
                 )
