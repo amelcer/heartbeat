@@ -16,6 +16,11 @@
         "SignUp": "Zarejestruj się"
     },
     "home": {
-        "hello": "Hello"
+        "hello": "Hello",
+        "yourMedicine": "Twoje leki na",
+        "today": "Dziś",
+        "emptyTitle": "Już nigdy nie zapomnisz o swoich lekarstwach",
+        "emptySubtitle": "Regularne zażywanie tabletek zgodne z planem jest najważniejszą rzeczą podczas Twojego leczenia",
+        "addSchedule": "Dodaj harmonogram"
     }
 }

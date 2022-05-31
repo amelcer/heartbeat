@@ -31,7 +31,7 @@ const DayNumber = styled(View)`
     background-color: white;
 `
 
-export default function DayPicker() {
+export default function WeekView() {
     const weekStart = DateTime.now().startOf('week')
     const today = DateTime.now()
     const week = useMemo(() => Array.from({ length: 7 }).map((_, i) => weekStart.plus({ day: i })), [weekStart])

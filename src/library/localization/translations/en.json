@@ -26,6 +26,11 @@
         "haveAccount": "Already have account?"
     },
     "home": {
-        "hello": "Hello"
+        "hello": "Hello",
+        "yourMedicine": "Your medicine for",
+        "today": "Today",
+        "emptyTitle": "Keep track of your medicine schedule whenever you are",
+        "emptySubtitle": "Taking medicine at the right time with keeping the schedule is very important in your treatment",
+        "addSchedule": "Add Schedule"
     }
 }
