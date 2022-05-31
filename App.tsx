@@ -1,9 +1,19 @@
 import 'intl'
+import * as Localization from 'expo-localization'
 import { useState, useEffect, useCallback } from 'react'
 import { SafeAreaView, StatusBar, StyleSheet, Platform } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'
 import * as Font from 'expo-font'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { Settings } from 'luxon'
 import Root from './src/Root'
+
+if (Localization.locale === 'pl-PL') {
+    require('intl/locale-data/jsonp/pl')
+    Settings.defaultLocale = 'pl'
+} else require('intl/locale-data/jsonp/en')
+
+const queryClient = new QueryClient()
 
 const styles = StyleSheet.create({
     container: {
@@ -53,7 +63,9 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
             <StatusBar barStyle={barStyle} />
-            <Root />
+            <QueryClientProvider client={queryClient}>
+                <Root />
+            </QueryClientProvider>
         </SafeAreaView>
     )
 }
