@@ -4,6 +4,10 @@ import i18n from 'src/library/localization/i18n'
 import theme from 'src/library/theme/theme'
 import styled from 'styled-components'
 
+interface Props {
+    onAddScheduleClick: () => void
+}
+
 const Container = styled(View)`
     flex: 1;
     justify-content: space-between;
@@ -33,13 +37,13 @@ const ButtonText = styled(Text)`
     font-size: 16px;
 `
 
-export default function EmptyScreen() {
+export default function EmptyScreen({ onAddScheduleClick }: Props) {
     return (
         <Container>
             <Image source={require('assets/empty-entry-screen.png')} />
             <Title>{i18n.t('home.emptyTitle')}</Title>
             <SubTitle>{i18n.t('home.emptySubtitle')}</SubTitle>
-            <Button labelStyle={{ color: '#fff' }} mode="contained" icon="plus">
+            <Button onPress={onAddScheduleClick} labelStyle={{ color: '#fff' }} mode="contained" icon="plus">
                 <ButtonText>{i18n.t('home.addSchedule')}</ButtonText>
             </Button>
         </Container>

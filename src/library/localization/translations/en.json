@@ -2,7 +2,9 @@
     "common": {
         "password": "Password",
         "confirmPassword": "Confirm password",
-        "email": "Email"
+        "email": "Email",
+        "next": "Next",
+        "cancel": "Cancel"
     },
     "errors": {
         "formNotValid": "Form is not valid",
@@ -32,5 +34,14 @@
         "emptyTitle": "Keep track of your medicine schedule whenever you are",
         "emptySubtitle": "Taking medicine at the right time with keeping the schedule is very important in your treatment",
         "addSchedule": "Add Schedule"
+    },
+    "addSchedule": {
+        "createNewSchedule": "Create new schedule",
+        "addMedicine": "Add medicine",
+        "schedule": "Select schedule",
+        "summary": "Summary",
+        "startingFrom": "Starting from",
+        "scheduleOccurrence": "Schedule occurrence",
+        "every": "Every"
     }
 }

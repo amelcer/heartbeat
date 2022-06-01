@@ -2,7 +2,9 @@
     "common": {
         "password": "Hasło",
         "confirmPassword": "Potwierdź hasło",
-        "email": "Email"
+        "email": "Email",
+        "next": "Dalej",
+        "cancel": "Anuluj"
     },
     "errors": {
         "formNotValid": "Błędnie uzupełniony formularz",
@@ -22,5 +24,14 @@
         "emptyTitle": "Już nigdy nie zapomnisz o swoich lekarstwach",
         "emptySubtitle": "Regularne zażywanie tabletek zgodne z planem jest najważniejszą rzeczą podczas Twojego leczenia",
         "addSchedule": "Dodaj harmonogram"
+    },
+    "addSchedule": {
+        "createNewSchedule": "Dodaj nowy harmonogram",
+        "addMedicine": "Dodaj lekarstwo",
+        "schedule": "Skonfiguruj harmonogram",
+        "summary": "Podsumowanie",
+        "startingFrom": "Od dnia",
+        "scheduleOccurrence": "Przypominaj",
+        "every": "W każdy"
     }
 }

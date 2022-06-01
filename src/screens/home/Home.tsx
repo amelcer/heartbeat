@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-paper'
@@ -6,6 +7,7 @@ import WeekView from 'src/components/WeekView/WeekView'
 import { useAuth } from 'src/library/hooks/useAuth'
 import i18n from 'src/library/localization/i18n'
 import theme from 'src/library/theme/theme'
+import { UserStackParamList } from 'src/types'
 import styled from 'styled-components'
 import getUserSchedules from './api'
 import EmptyScreen from './EmptyScreen'
@@ -33,10 +35,14 @@ const SubTitleCaption = styled(SubTitle)`
     color: ${theme.colors.primary};
 `
 
-export default function Home() {
+export default function Home({ navigation }: NativeStackScreenProps<UserStackParamList>) {
     const { data, isLoading, isError } = useQuery('schedules', getUserSchedules)
     const { user } = useAuth()
     const name = user?.email?.split('@')[0] || ''
+
+    const handleAddScheduleClick = () => {
+        navigation.navigate('NewSchedule')
+    }
 
     return (
         <Container>
@@ -49,7 +55,11 @@ export default function Home() {
             </SubTitle>
             {isLoading && <HomePlaceholder />}
             {isError && <Text>Error</Text>}
-            {data && data?.length > 0 ? <Text>Medicines</Text> : <EmptyScreen />}
+            {data && data?.length > 0 ? (
+                <Text>Your Medicines</Text>
+            ) : (
+                <EmptyScreen onAddScheduleClick={handleAddScheduleClick} />
+            )}
         </Container>
     )
 }
