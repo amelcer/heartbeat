@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
 import { ScrollView, View } from 'react-native'
+import { FormProvider, useForm } from 'react-hook-form'
+import styled from 'styled-components'
 import NavigationButtons from 'src/components/ScheduleForm/NavigationButtons'
 import ScheduleStepper from 'src/components/Stepper/ScheduleStepper'
 import { Step } from 'src/components/Stepper/types'
 import i18n from 'src/library/localization/i18n'
-import styled from 'styled-components'
-import AddMedicine from './AddMedicine'
-import Schedule from './Schedule'
+import AddMedicine from 'src/components/ScheduleForm/AddMedicine'
+import Schedule from 'src/components/ScheduleForm/Schedule'
 
 const Container = styled(View)`
     flex: 1;
