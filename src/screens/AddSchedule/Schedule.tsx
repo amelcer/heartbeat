@@ -1,8 +1,8 @@
 import { Button, Text } from 'react-native-paper'
 
-export default function Schedule({ navigation }: any) {
+export default function Schedule() {
     return (
-        <Button onPress={() => navigation.navigate('AddMedicine')}>
+        <Button>
             <Text>Prev</Text>
         </Button>
     )

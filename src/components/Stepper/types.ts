@@ -1,6 +1,7 @@
 export interface Step {
-    onPress: () => void
     title: string
+    component: JSX.Element
+    onPress?: () => void
 }
 
 export interface Stepper {

@@ -4,7 +4,8 @@
         "confirmPassword": "Confirm password",
         "email": "Email",
         "next": "Next",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "finish": "Finish"
     },
     "errors": {
         "formNotValid": "Form is not valid",

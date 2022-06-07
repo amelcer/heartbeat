@@ -1,9 +1,5 @@
-import { Button, Text } from 'react-native-paper'
+import { Text } from 'react-native-paper'
 
-export default function AddMedicine({ navigation }: any) {
-    return (
-        <Button onPress={() => navigation.navigate('Schedule')}>
-            <Text>Next</Text>
-        </Button>
-    )
+export default function AddMedicine() {
+    return <Text>Ala ma kota</Text>
 }
