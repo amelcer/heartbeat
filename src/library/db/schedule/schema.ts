@@ -1,12 +1,14 @@
 interface TakingHour {
     time: string
     label: string
+    amount: number
+    taken: boolean
 }
 
-interface Medicine {
+export interface Medicine {
     name: string
-    amount: number
-    takingHour: TakingHour
+    takingHour: TakingHour[]
+    description?: string
 }
 
 interface BaseSchedule {

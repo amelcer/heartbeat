@@ -5,12 +5,16 @@
         "email": "Email",
         "next": "Next",
         "cancel": "Cancel",
-        "finish": "Finish"
+        "finish": "Finish",
+        "medicineName": "Medicine name",
+        "description": "Description",
+        "optional": "Optional"
     },
     "errors": {
         "formNotValid": "Form is not valid",
         "cantLogin": "Could not login, Try again later",
-        "cantRegister": "Could not register, Try again later"
+        "cantRegister": "Could not register, Try again later",
+        "fillRequiredFields": "Fill required fields"
     },
     "login": {
         "signIn": "Sign In",

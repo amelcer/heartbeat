@@ -8,6 +8,13 @@ import { Step } from 'src/components/Stepper/types'
 import i18n from 'src/library/localization/i18n'
 import AddMedicine from 'src/components/ScheduleForm/AddMedicine'
 import Schedule from 'src/components/ScheduleForm/Schedule'
+import KeyboardAvoidViewContainer from 'src/components/KeyboardAvoidView/KeyboardAvoidViewContainer'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Snackbar } from 'react-native-paper'
+import { AddScheduleForm } from './types'
+import { addScheduleSchema } from './schema'
+
+const SNACKBAR_VISIBILITY_TIME = 3000
 
 const Container = styled(View)`
     flex: 1;
@@ -22,7 +29,15 @@ const StyledScrollView = styled(ScrollView)`
 
 export default function NewSchedule({ navigation }: any) {
     const [currentStep, setCurrentStep] = useState(0)
-    const methods = useForm()
+    const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null)
+    const methods = useForm<AddScheduleForm>({
+        mode: 'onChange',
+        resolver: yupResolver(addScheduleSchema()),
+    })
+
+    const {
+        formState: { isDirty, isValid },
+    } = methods
 
     const STEPS = useMemo<Step[]>(
         () => [
@@ -39,6 +54,11 @@ export default function NewSchedule({ navigation }: any) {
     )
 
     const handleNextStep = () => {
+        if (isDirty && !isValid) {
+            const errorMessage = i18n.t('errors.fillRequiredFields') // TODO reduce errors object to get message
+            setSnackbarMessage(errorMessage)
+            return
+        }
         if (currentStep === STEPS.length - 1) return // TODO: submit form
         setCurrentStep(currentStep + 1)
     }
@@ -47,16 +67,29 @@ export default function NewSchedule({ navigation }: any) {
         navigation.navigate('Home')
     }
 
+    const handleSnackbarDismiss = () => {
+        setSnackbarMessage(null)
+    }
+
     return (
         <FormProvider {...methods}>
             <Container>
                 <ScheduleStepper currentStep={currentStep} steps={STEPS} />
-                <StyledScrollView>{STEPS[currentStep].component}</StyledScrollView>
+                <KeyboardAvoidViewContainer>
+                    <StyledScrollView>{STEPS[currentStep].component}</StyledScrollView>
+                </KeyboardAvoidViewContainer>
                 <NavigationButtons
                     onNextPress={handleNextStep}
                     onCancelPress={handleCancelClick}
                     lastStep={currentStep === STEPS.length - 1}
                 />
+                <Snackbar
+                    visible={!!snackbarMessage}
+                    onDismiss={handleSnackbarDismiss}
+                    duration={SNACKBAR_VISIBILITY_TIME}
+                >
+                    {snackbarMessage}
+                </Snackbar>
             </Container>
         </FormProvider>
     )

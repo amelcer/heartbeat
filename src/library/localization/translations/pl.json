@@ -5,11 +5,15 @@
         "email": "Email",
         "next": "Dalej",
         "cancel": "Anuluj",
-        "finish": "Dodaj"
+        "finish": "Dodaj",
+        "medicineName": "Nazwa lekarstwa",
+        "description": "Opis",
+        "optional": "Opcjonalnie"
     },
     "errors": {
         "formNotValid": "Błędnie uzupełniony formularz",
-        "cantLogin": "Nie udało się zalogować, spróbuj ponownie później"
+        "cantLogin": "Nie udało się zalogować, spróbuj ponownie później",
+        "fillRequiredFields": "Wypełnij odpowiednio wymagane pola"
     },
     "login": {
         "signIn": "Zaloguj",
